@@ -25,3 +25,40 @@ body {
     text-wrap: balance;
   }
 }
+
+.navbar {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: #333;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #0070f3;
+}
+
+.navbar .dark-mode {
+  cursor: pointer;
+}
+
+.navbar .cart {
+  position: relative;
+}
+
+.navbar .cart span {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+}
