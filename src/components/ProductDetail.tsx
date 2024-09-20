@@ -61,7 +61,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, isOpen, onClose 
           className="w-full h-auto max-h-64 object-contain mb-4"
         />
         <h1 className="text-2xl font-bold text-blue-500">{product.title}</h1>
-        <p className="text-gray-500 text-sm mb-4">{categoryName}</p> {/* Display category name */}
+        <p className="text-gray-500 text-sm mb-4">{categoryName}</p>
         <p className="text-gray-700">{product.description}</p>
         <p className="text-green-500 mt-4 text-xl">${product.price}</p>
         <button onClick={handleAddToCart} className="bg-green-500 text-white mt-4 p-2 rounded">Add to Cart</button>

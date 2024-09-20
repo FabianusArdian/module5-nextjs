@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "jsonserver": "json-server db.json --watch --port 9000"
+    "jsonserver": "json-server db.json --watch --port 5000"
   },
   "dependencies": {
     "autoprefixer": "^10.4.20",

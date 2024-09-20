@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [categories, setCategories] = useState<{ [key: number]: string }>({});
-  const { isAuthenticated } = useAuth(); // Use isAuthenticated from AuthContext
+  const { isAuthenticated } = useAuth(); 
 
   useEffect(() => {
     fetchProducts()

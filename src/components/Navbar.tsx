@@ -33,19 +33,15 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md w-[80%] mx-auto p-4 mb-6 rounded-md">
       <div className="flex justify-between items-center">
-        {/* Logo */}
         <Link href="/" passHref>
-          {/* Tidak perlu <a> */}
           <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 cursor-pointer">
             HaHa Store
           </span>
         </Link>
 
-        {/* Categories */}
         <div className="hidden sm:flex space-x-4">
           {categories.map((category) => (
             <Link key={category.id} href={`/category/${category.id}`}>
-              {/* Tidak perlu <a> */}
               <span className="text-gray-800 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 text-sm font-medium cursor-pointer">
                 {category.name}
               </span>
@@ -53,9 +49,7 @@ const Navbar: React.FC = () => {
           ))}
         </div>
 
-        {/* Right Side */}
         <div className="flex items-center space-x-6">
-          {/* Dark Mode Toggle */}
           <button
             onClick={toggleDarkMode}
             className="text-gray-800 dark:text-gray-300 hover:text-yellow-500 transition duration-300"
@@ -64,9 +58,7 @@ const Navbar: React.FC = () => {
             {isDarkMode ? '🌞' : '🌙'}
           </button>
 
-          {/* Cart Icon */}
           <Link href="/cart">
-            {/* Tidak perlu <a> */}
             <span className="relative text-gray-800 dark:text-gray-300 hover:text-blue-500 transition duration-300 cursor-pointer">
               🛒
               {cartCount > 0 && (
@@ -77,7 +69,6 @@ const Navbar: React.FC = () => {
             </span>
           </Link>
 
-          {/* Auth Links */}
           {isAuthenticated ? (
             <button
               onClick={logout}
@@ -87,7 +78,6 @@ const Navbar: React.FC = () => {
             </button>
           ) : (
             <Link href="/login">
-              {/* Tidak perlu <a> */}
               <span className="text-gray-800 dark:text-gray-300 hover:text-blue-500 transition duration-300 cursor-pointer">
                 Login
               </span>

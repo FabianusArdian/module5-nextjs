@@ -11,7 +11,7 @@ interface CartItem {
 
 const CartPage: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const { isAuthenticated } = useAuth(); // Import and use isAuthenticated from AuthContext
+  const { isAuthenticated } = useAuth(); 
 
   useEffect(() => {
     if (isAuthenticated) {
