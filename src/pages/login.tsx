@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const LoginPage: React.FC = () => {
   const router = useRouter();
-  const { loginUser } = useAuth();
+  const { loginUser } = useAuth(); // Mengambil loginUser dari context
 
   const formik = useFormik({
     initialValues: {
@@ -21,11 +21,11 @@ const LoginPage: React.FC = () => {
     }),
     onSubmit: async (values) => {
       try {
-        const user = await login(values.email, values.password);
-        loginUser(user);
-        router.push('/');
+        const user = await login(values.email, values.password); // Panggil API login
+        loginUser(user); // Kirim objek user ke loginUser
+        router.push('/'); // Arahkan ke halaman utama setelah login sukses
       } catch (error) {
-        console.error('Error logging in:', error);
+        console.error('Error logging in:', error); // Tangani error jika login gagal
       }
     },
   });
@@ -48,7 +48,6 @@ const LoginPage: React.FC = () => {
           <div className="text-red-500 text-sm mb-4">{formik.errors.email}</div>
         )}
 
-
         <input
           type="password"
           id="password"
@@ -62,11 +61,9 @@ const LoginPage: React.FC = () => {
           <div className="text-red-500 text-sm mb-4">{formik.errors.password}</div>
         )}
 
-
         <button type="submit" className="bg-blue-500 text-white py-3 rounded-lg w-full hover:bg-blue-600 transition-colors">
           Login
         </button>
-
 
         <div className="mt-4 text-center">
           <p className="text-gray-600">

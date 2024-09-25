@@ -1,37 +1,40 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
-// Define a type for the AuthContext state
 interface AuthContextType {
   isAuthenticated: boolean;
-  loginUser: () => void;
+  loginUser: (user: any) => void;
   logout: () => void;
 }
 
-// Create the AuthContext with default values
 const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   loginUser: () => {},
   logout: () => {},
 });
 
-// Define the AuthProvider component
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [user, setUser] = useState<any>(null);
+
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
       setIsAuthenticated(true);
     }
   }, []);
 
-  const loginUser = () => {
+  const loginUser = (user: any) => {
+    setUser(user);
     setIsAuthenticated(true);
+    localStorage.setItem('user', JSON.stringify(user));
   };
 
   const logout = () => {
+    setUser(null); // Hapus user
     setIsAuthenticated(false);
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   };
 
   return (
@@ -41,5 +44,5 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   );
 };
 
-// Custom hook to use the AuthContext
+// Custom hook untuk menggunakan AuthContext
 export const useAuth = () => useContext(AuthContext);

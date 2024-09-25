@@ -7,8 +7,8 @@ import { useAuth } from '../context/AuthContext';
 
 const RegisterPage: React.FC = () => {
   const router = useRouter();
-  const { loginUser } = useAuth();
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const { loginUser } = useAuth(); // Mengambil loginUser dari context
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State untuk pesan error
 
   const formik = useFormik({
     initialValues: {
@@ -27,7 +27,7 @@ const RegisterPage: React.FC = () => {
     }),
     onSubmit: async (values) => {
       try {
-        setErrorMessage(null);
+        setErrorMessage(null); // Reset error message
 
         const user = await register({
           name: values.name,
@@ -35,7 +35,8 @@ const RegisterPage: React.FC = () => {
           password: values.password,
         });
 
-        router.push('/');
+        loginUser(user); // Kirim objek user ke loginUser setelah registrasi berhasil
+        router.push('/'); // Arahkan ke halaman utama
       } catch (error: any) {
         if (error.message.includes('Email already exists')) {
           setErrorMessage('Email is already registered.');
@@ -106,7 +107,6 @@ const RegisterPage: React.FC = () => {
         {formik.touched.confirmPassword && formik.errors.confirmPassword && (
           <div className="text-red-500 text-sm mb-4">{formik.errors.confirmPassword}</div>
         )}
-
 
         <button type="submit" className="bg-blue-500 text-white py-2 w-full rounded hover:bg-blue-600 transition-colors">
           Register
